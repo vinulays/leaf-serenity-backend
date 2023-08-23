@@ -28,3 +28,19 @@ export const addFavorite = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const removeFavorite = async (req, res) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.userId,
+      { $pull: { favorites: req.params.favoriteId } },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json(updatedUser);
+  } catch (error) {}
+};

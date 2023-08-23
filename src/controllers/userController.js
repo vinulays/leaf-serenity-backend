@@ -64,6 +64,10 @@ export const getUserbyId = async (req, res) => {
         path: "cart.plant",
         model: "plant",
       })
+      .populate({
+        path: "favorites",
+        model: "plant",
+      })
       .exec();
 
     user
