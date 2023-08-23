@@ -2,7 +2,7 @@ import {
   createPlant,
   getAllPlants,
   getPlantById,
-} from "../controllers/plantControllers.js";
+} from "../controllers/plantController.js";
 
 const routes = (app) => {
   app.get("/api/v1/plants", getAllPlants);

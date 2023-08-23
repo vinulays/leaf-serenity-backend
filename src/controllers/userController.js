@@ -32,7 +32,7 @@ export const createUser = async (req, res) => {
     await res.status(200).json(savedUser);
   } catch (error) {
     console.log(error);
-    if (err.message.includes("E11000 duplicate key error")) {
+    if (error.message.includes("E11000 duplicate key error")) {
       res.status(409).json({
         error:
           "The provided email is already associated with another Provider.",
@@ -59,7 +59,12 @@ export const getUserbyId = async (req, res) => {
   try {
     const user = await User.findOne({
       _id: req.params.userId,
-    });
+    })
+      .populate({
+        path: "cart.plant",
+        model: "plant",
+      })
+      .exec();
 
     user
       ? res.status(200).json(user)
