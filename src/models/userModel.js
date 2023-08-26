@@ -14,12 +14,7 @@ const userSchema = new mongoose.Schema({
   zip: { type: String, required: true },
   role: { type: String, required: true },
   cart: { type: [cartItemSchema], required: false },
-  favorites: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Plant",
-    },
-  ],
+  favorites: { type: [favoriteItemSchema], required: false, unique: false },
 });
 
 export const User = mongoose.model("user", userSchema);
