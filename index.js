@@ -5,7 +5,6 @@ import pkg from "mongoose";
 import cors from "cors";
 import userRoutes from "./src/routes/userRoutes.js";
 import plantRoutes from "./src/routes/plantRoutes.js";
-import cartRoutes from "./src/routes/cartRoutes.js";
 import favoriteRoutes from "./src/routes/favoriteRoutes.js";
 import bodyParser from "body-parser";
 
@@ -30,7 +29,6 @@ connectDB();
 
 userRoutes(app);
 plantRoutes(app);
-cartRoutes(app);
 favoriteRoutes(app);
 
 // Connecting to MongoDB using mongoose

@@ -3,6 +3,7 @@ import {
   getAllPlants,
   getPlantById,
 } from "../controllers/plantController.js";
+import { protect } from "../middleware/authMiddleware.js";
 
 const routes = (app) => {
   app.get("/api/v1/plants", getAllPlants);
